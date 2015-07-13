@@ -1,0 +1,107 @@
+---
+title: "Data Science Math Assignment 2"
+output: html_document
+---
+
+**2.16 PB & J Problem:** 
+
+For this question, we first look first at what we have which is given as follows 
+
+`r pb <- 0.80`
+`r j  <- 0.89`
+`r pb_j <- 0.78`
+
+- P(PB) = `r pb`
+- P(J)  = `r j`
+- P(PB and J) = `r pb_j`
+
+We know from conditional probablilty that we can solve for the probabiliy of liking PB given J 
+
+`r given_j <- (pb_j)/j`
+- P(PB|J) = P(PB and J)/P(J) = **`r given_j`**  
+
+This isn't quite the answer we are looking for, but if we remember Bayes theorem we find the following: 
+
+`r given_pb <- ((given_j) * j ) / pb`
+-  P(J|PB) = (P(PB|J) *  P(J)) / P(PB) =  **`r given_pb`**
+
+
+  
+**2.18 Weight and Health Coverage Part II:** 
+
+- a. For this question, we must simply look at the table. The area has not changed and we can look at the whole group and take the total probability of being obese. 
+ 
+        P(Obese) = 0.2839
+        
+- b. For this question, we can consider the "space" we are referring to, which is all healthcare insurances (given) - denoted by HC.
+`r obese_hc <- 0.2503 / 0.8954` 
+        P(Obese|HC) =  P(Obese and HC) / P(HC) = **`r obese_hc`**
+        
+- c. Again we look at the space and focus just on given - no HC.
+`r obese_nohc <- .0336 / .1046`
+
+  P(Obese|NO HC) = P(Obese and NO HC) / P(NO HC) = **`r obese_nohc`**
+        
+- d. We can see that Health Coverage and Obesity are not independent events. As you can see from the probabilities, the likelihood of obesity increases when a person does not have an Health Insurance. 
+
+
+**2.20 Assortative Mating:**
+
+- a. For this first question, we have to consider that these events are not mutually exclusive, so we have take that into account. So, we will use the following equation:
+ 
+        P(M_Blue or F_Blue) = P(M_Blue) + P(F_Blue) - P(M_Blue and F_Blue)  
+        P(M_Blue or F_Blue) = 114/204 + 108/204 - 78/204   
+        P(M_Blue or F_Blue) = 144/204 = **`r 144/204`**  
+        
+- b. For this problem, we are dealing with a given statement. So we can look to conditional probablility: 
+        
+        P(F_Blue | M_Blue) = P(M_Blue and F_Blue) / P(M_Blue)   
+        P(F_Blue | M_Blue) = 78/204 / 114/204    
+        P(F_Blue | M_Blue) = 78/204 * 204/114 = **`r 15912/23256`**   
+         
+- c. The first part of this question is:
+
+        P(F_Blue | M_Brown) = P(M_Brown and F_Blue) / P(M_Brown)   
+        P(F_Blue | M_Brown) = 19/204 / 54/204    
+        P(F_Blue | M_Brown) = 3876/11016 = **`r 3876/11016`**    
+
+        The second part is: 
+      
+        P(F_Blue | M_Green) = P(M_Green and F_Blue) / P(M_Green)     
+        P(F_Blue | M_Green) = 11/204 / 36/204      
+        P(F_Blue | M_Green) = 2244/7344 = **`r 2244/7344`**      
+        
+
+- d. From the probabilities given above, we can see that there is a dependency on eye color, and the two are not independent. We see that given the males eye color, the likelihood of them having a partner with similar eye color is dramatically increased.  
+
+
+**2.26 Twins:** 
+
+This question presents a lot of information, so its best to start with what we are looking for and then gathering info from there. Specifically what we want is: 
+P(Identical | FF) 
+
+What are we given (elimnating male probabilites to streamline information)?
+
+- P(FF|Identical) = 0.5
+- P(FF|Fraternal) = 0.25
+- P(Identical) = 0.30
+
+Bayes Theorem gives us the Following: 
+
+P(Identical | FF) = (P(FF|Identical) * P(Identical)) / P(FF)
+
+From the above information, we have most of the values, however, we don't have the probability of having both females. At first, this stumped me, so I took into consideration the space we had. All things aside, if we had 8 pairs of twins that followed the probabilities exactly and 4 pairs were  identical, and 4 pairs were Fraternal, we could count how many Female pairs we get. Consider the diagram:
+
+Identical|Fraternal
+---------|---------
+MM       | MM
+MM       | FF
+FF       | MF
+FF       | FM
+
+This would give us 3 pairs of FF. If we take 3/8 we would the probability of having females which is 0.375. I am quite sure that this could be derived via a formula from the P(FF|Idenitical) and P(FF|Fraternal) as you will note 3/8 is simply 1/2 * 1/4. But at this point, my brain was hurting a bit from the math, so I just took 0.375 as the correct answer. This would give us: 
+
+P(P(Identical | FF) = (P(FF|Identical) * P(Identical)) / P(FF)
+P(P(Identical | FF) = (0.5 * 0.3 / 0.375) = 0.4
+
+
